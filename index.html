@@ -2,87 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Game</title>
+    <title>$Title$</title>
 </head>
 <body>
-<!--<script type="text/javascript" src="keys.js"></script>-->
-
-<canvas id="canvas" width="300" height="300" style="border: 1px solid"></canvas>
-
-<script>
-    var gameEngine;
-    var canvas = document.getElementById('canvas');
-    var context = canvas.getContext('2d');
-    var x = 10;
-    var y = 10;
-
-    function drawRect() {
-        context.fillStyle = 'black';
-        context.clearRect(0,0,300,300);
-        context.fillRect(x,y,50,50);
-    }
-
-    var nextGameStep = (function () {
-        return requestAnimationFrame ||
-            mozRequestAnimationFrame ||
-            msRequestAnimationFrame  ||
-            webkitRequestAnimationFrame ||
-            oRequestAnimationFrame ||
-            function (callback) {
-                setTimeout(callback, 1000 / 60)
-            };
-    })();
-
-    var gameEngineStep = function () {
-        gameEngine();
-        nextGameStep(gameEngineStep);
-    };
-
-    var setGameEngine = function (callback) {
-        gameEngine = callback;
-    };
-
-    var gameEngineStart = function (callback) {
-        gameEngine = callback;
-        gameEngineStep();
-    };
-
-    var gameLoopLeft = function () {
-        drawRect();
-        x -= 1;
-        if(x < 50){
-            setGameEngine(gameLoopRight);
-        }
-    };
-
-    var gameLoopRight = function () {
-        drawRect();
-        x += 1;
-        if(x >= 100){
-            setGameEngine(gameLoopLeft);
-        }
-    };
-
-    gameEngineStart(gameLoopRight);
-
-</script>
-
-<!--<script>
-    var ctx = document.getElementById('canv').getContext('2d');
-
-    function engine() {
-
-        ctx.clearRect(0,0,100,100);
-
-        if(isKeyDown('W')){
-           ctx.fillText('Нажата W', 30, 20);
-        }
-
-        if(isKeyDown('S')){
-            ctx.fillText('Нажата S', 30, 30);
-        }
-    }
-</script>-->
-
+$END$
 </body>
 </html>
